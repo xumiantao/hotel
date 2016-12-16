@@ -12,6 +12,10 @@
   <link href="../../../Public/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet" /> 
   <link href="../../../Public/css/animate.min.css" rel="stylesheet" /> 
   <link href="../../../Public/css/style.min862f.css?v=4.1.0" rel="stylesheet" /> 
+  <link rel="stylesheet" type="text/css" href="../../../Public/css/plugins/simditor/simditor.css" />
+  <link href="../../../../../../../Public/css/plugins/jqgrid/ui.jqgridffe4.css?0820" rel="stylesheet" /> 
+  <link href="../../../../../../../Public/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../../../../../../../Public/css/plugins/footable/footable.core.css" rel="stylesheet">
  </head> 
  <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden"> 
     <div id="wrapper"> 
@@ -27,13 +31,51 @@
         <span><img alt="image" class="img-circle" src="../../../Public/img/profile_small.jpg" /></span> 
         <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span class="clear"> <span class="block m-t-xs"><strong class="font-bold">admin</strong></span> <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span> </span> </a> 
         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-         <li><a href="/index.php/Home/index/edit_password">修改密码</a></li>  
-         <li><a href="/index.php/Home/index/logout">安全退出</a></li> 
+         <li><a href="/index.php/Admin/index/edit_password">修改密码</a></li>  
+         <li><a href="/index.php/Admin/index/logout">安全退出</a></li> 
         </ul> 
        </div> 
       </li> 
-      <li><a href="/"><span class="nav-label">主页</span></a></li> 
-
+      <li><a href="/index.php/Admin"><span class="nav-label">主页</span></a></li>
+      <li> <a href="#"><span class="nav-label">商品管理</span><span class="fa arrow"></span></a> 
+       <ul class="nav nav-second-level"> 
+        <li><a class="J_menuItem" href="/index.php/Admin/Product/productList">商品列表</a></li>
+        <li><a class="J_menuItem" href="/index.php/Admin/Product/cateList">商品分类</a></li>
+       </ul>
+      </li>
+      <li> <a href="#"><span class="nav-label">房间管理</span><span class="fa arrow"></span></a> 
+       <ul class="nav nav-second-level"> 
+        <li><a class="J_menuItem" href="/index.php/Admin/Store/storeList">门店管理</a></li>
+        <li><a class="J_menuItem" href="/index.php/Admin/Room/roomList">房间信息</a></li>
+       </ul>
+      </li>
+      <li> <a href="#"><span class="nav-label">订单管理</span><span class="fa arrow"></span></a> 
+       <ul class="nav nav-second-level"> 
+        <li><a class="J_menuItem" href="/index.php/Admin/order/lists">订单列表</a></li> 
+       </ul>
+      </li>
+      <li><a href="#"><span class="nav-label">卡片管理</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li><a href="/index.php/Admin/Card/category" class="J_menuItem">会员等级分类</a></li>
+          <li><a href="/index.php/Admin/Card/catelist" class="J_menuItem">会员等级列表</a></li>
+        </ul>
+      </li>
+      <li> <a href="#"><span class="nav-label">系统消息</span><span class="fa arrow"></span></a> 
+       <ul class="nav nav-second-level"> 
+        <li><a class="J_menuItem" href="/index.php/Admin/message/adlist">消息通知</a> </li> 
+        <li><a class="J_menuItem" href="/index.php/Admin/message/lists">消息记录</a> </li> 
+       </ul>
+      </li>
+      <li> <a href="#"><span class="nav-label">会员管理</span><span class="fa arrow"></span></a> 
+       <ul class="nav nav-second-level"> 
+        <li><a class="J_menuItem" href="/index.php/admin/user/index">会员列表</a></li>
+       </ul>
+      </li>
+      <li><a href="#"><span class="nav-label">导航栏管理</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li><a href="/index.php/Admin/Menu/menulist" class="J_menuItem">自定义导航栏</a></li>
+        </ul>
+      </li>
      </ul> 
     </div> 
    </nav> 
@@ -69,7 +111,7 @@
        <li class="J_tabCloseOther"><a>关闭其他选项卡</a> </li> 
       </ul> 
      </div> 
-     <a href="/index.php/Home/index/logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a> 
+     <a href="/index.php/Admin/index/logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a> 
     </div> 
     <div class="row J_mainContent" id="content-main"> 
      <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="../../../Public/index.html" frameborder="0" data-id="index_v1.html" seamless=""></iframe> 
@@ -77,7 +119,7 @@
     <div class="footer"> 
      <div class="pull-right">
       &copy; 2015-2016
-      <a href="#" target="_blank">达喀尔约车</a> 
+      <a href="#" target="_blank">广东澳新考拉信息科技</a> 
      </div> 
     </div> 
    </div> 

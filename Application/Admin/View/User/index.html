@@ -1,0 +1,115 @@
+<include file="Public/header" />
+<style>
+.pages a,.pages span {
+    display:inline-block;
+    padding:2px 5px;
+    margin:0 1px;
+    border:1px solid #f0f0f0;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+.pages a,.pages li {
+    display:inline-block;
+    list-style: none;
+    text-decoration:none; color:#58A0D3;
+}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{
+    margin:0;
+}
+.pages a:hover{
+    border-color:#50A8E6;
+}
+.pages span.current{
+    background:#50A8E6;
+    color:#FFF;
+    font-weight:700;
+    border-color:#50A8E6;
+}
+</style>
+<div class="wrapper wrapper-content animated fadeInRight"> 
+   <div class="row"> 
+    <div class="col-sm-12"> 
+     <div class="ibox float-e-margins"> 
+      <div class="ibox-title"> 
+       <h5>会员列表</h5> 
+       <div class="btn-group" style="float: right;">
+       <button class="btn btn-success" onclick="location.href='/index.php/Admin/User/addUser'">添加管理员</button>
+      </div> 
+      <div class="ibox-content">  
+       <div class="table-responsive"> 
+        <table class="table table-striped"> 
+         <thead> 
+          <tr> 
+           <th>id</th> 
+           <th>用户名</th> 
+           <th>手机号码</th> 
+           <th>会员昵称</th>
+           <th>性别</th> 
+           <th>签名</th> 
+           <th>头像</th>
+           <th>积分</th>
+           <th>等级</th>
+           <th>操作</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+         <volist name="user" id="vo">
+          <tr> 
+           <td>{$vo.id}</td> 
+           <td>{$vo.username}</td>  
+           <td>{$vo.mobile_phone}</td>
+           <td>{$vo.nickname}</td>
+           <td>
+           <if condition="$vo.sex eq '0'">男
+           <else/>女
+           </if>
+           </td>
+           <td>{$vo.nickname}</td>
+           <td><img src="__ROOT__/Uploads/Public/user/{$vo.touxiang}" width="32" height="32"></td> 
+           <td>{$vo.integral}</td>
+           <td>{$vo.grade}</td>
+           <td>
+              <a href="{:U('Admin/User/userInfo/',array('id'=>$vo['id']))}">查看</a>
+              <a href="javascript:del({$vo.id})">删除</a>
+           </td>  
+          </tr>
+          </volist>
+              </tbody> 
+        </table> 
+       </div> 
+       <div class="pages">{$page}</div> 
+      </div>      
+     </div>      
+    </div>    
+   </div>   
+  </div> 
+  <include file="Public/footer" />
+  <script type="text/javascript">
+            function del(id)
+        {
+            if(!confirm('确定要删除吗?'))
+                return false;
+		$.ajax({
+			url:"{:U('Admin/User/delUser')}",
+            type:'post',
+            dataType:'json',
+            contentType:"application/x-www-form-urlencoded;charset=UTF-8",            
+            data:{'id':id},
+			success:function(info){	
+                if(info.status==0){
+                    layer.open({
+                    title: '信息',
+                    content: info.info,
+                    });
+                }
+                else{ 
+                    alert(info.info);
+                    window.location.href=info.url;                  
+                }  
+          
+			}
+		}); 
+               return false;
+          }
+  </script>

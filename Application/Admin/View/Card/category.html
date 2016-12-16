@@ -1,0 +1,57 @@
+<include file="Public/header" />
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <!-- Panel Other -->
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5 class="example-title">会员等级</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <!-- Example Toolbar -->
+                        <div class="example-wrap">
+                            <div class="example table-responsive">
+                                <table id="exampleTableToolbar" data-mobile-responsive="true" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="name">会员等级</th>
+                                            <th data-field="description">等级属性</th>
+                                            <th data-field="license">累计消费</th>
+                                            <th data-field="star">折扣</th>
+                                            <th data-field="active">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <volist name="card" id="vo">
+                                        <tr>
+                                            <td>{$vo.grade}</td>
+                                            <td>{$vo.description}</td>
+                                            <td>{$vo.content}</td>
+                                            <td><if condition="($vo.discount eq 0)"><else />{$vo.discount}折</if></td>
+                                            <td><a href="{:U('/Admin/Card/card_save/id/'.$vo[id])}">编辑</a></td>
+                                        </tr>
+                                    </volist>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Toolbar -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Panel Other -->
+    </div>
+   <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<include file="Public/footer" />
+</body>
+<script type="text/javascript">
+    $('#card_save').click(function(){
+        var req={id:$(this).data("id")};
+        $.post("{:U('/Admin/Card/card_save')}",req,function(jsonobj){
+            
+        });
+    });
+</script>
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/table_bootstrap.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>

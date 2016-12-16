@@ -1,0 +1,130 @@
+<include file="Public/header" /> 
+<style>
+.ibox-content {
+    clear: both;
+    line-height: 31px;
+    text-indent: 1em;
+}
+</style>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+        <form action="{:U('Admin/User/editUser/')}" method="post" enctype="multipart/form-data">
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>用户信息</h5>
+                    </div>
+                    <div>
+                        <div class="ibox-content no-padding border-left-right">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>用户名</h5>
+                    </div>
+                    <div>
+                        <div class="ibox-content no-padding border-left-right">
+                            {$info.username}                        
+                        </div>
+                        <input type="hidden" name="id" value="{$info.id}"/>
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>手机号码</h5>
+                    </div>
+                    <div>
+                        <div class="ibox-content no-padding border-left-right">
+                            {$info.mobile_phone}                        
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>会员昵称</h5>
+                    </div>
+                    <div>
+                     <input type="text" name="nickname" class="form-control" value="{$info.nickname}" /> 
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>性别</h5>
+                    </div>
+                    <div>
+                        <select class="form-control" name="sex" default="0">
+                            <option value="0" <if condition="$info.sex eq 0">selected="selected"</if>>男</option>
+                            <option value="1" <if condition="$info.sex eq 1">selected='selected'</if>>女</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>签名</h5>
+                    </div>
+                    <div>
+                <input type="text" name="autograph" class="form-control" value="{$info.autograph}" /> 
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>地址</h5>
+                    </div>
+                    <div>
+                <input type="text" name="address" class="form-control" value="{$info.address}" /> 
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>会员积分</h5>
+                    </div>
+                    <div>
+                <input type="text" name="integral" class="form-control" value="{$info.integral}" /> 
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>会员等级</h5>
+                    </div>
+                    <div>
+                        <select class="form-control" name="grade" >
+                            <foreach name="level" item="vo" key="key">
+                             <option value="{$vo.id}" <if condition="($vo.id eq $info['grade'])">selected="selected"</if>>{$vo.description}</option>
+                            </foreach>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>用户头像</h5>
+                    </div>
+                    <div>
+                    <img src="__ROOT__/Uploads/Public/user/{$info.touxiang}" width="32" height="32" /> 
+                    <br /><br />
+                    <input type='file'  name='photo' />                                                             
+                    </div>
+                </div>  
+                                             
+                <div class="col-sm-12 col-sm-offset-3">
+                <button  type="submit" class="btn btn-primary">提交</button>                
+                <button class="btn btn-primary"  onclick="history.go(-1)">返回</button>                
+                </div>
+                
+            </div>
+            </form>
+        </div>
+    </div>
+<include file="Public/footer" />
+
+</body>
